@@ -4,9 +4,9 @@
     {
         // Atributos
 
-        private Genre Genre { get; set; }
-        private string Title { get; set; }
-        private string Description { get; set; }
-        private int Year { get; set; }
+        private Genero Genero { get; set; }
+        private string Titulo { get; set; }
+        private string Descricao { get; set; }
+        private int Ano { get; set; }
     }
 }
