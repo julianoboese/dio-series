@@ -6,35 +6,35 @@ namespace DioSeries
 {
     internal class SerieRepositorio : IRepositorio<Serie>
     {
-        private List<Serie> listaserie = new List<Serie>();
+        private List<Serie> listaSerie = new List<Serie>();
         public void Atualiza(int id, Serie entidade)
         {
-            throw new NotImplementedException();
+            listaSerie[id] = entidade;
         }
 
         public void Exclui(int id)
         {
-            throw new NotImplementedException();
+            listaSerie[id].Excluir();
         }
 
         public void Insere(Serie entidade)
         {
-            throw new NotImplementedException();
+            listaSerie.Add(entidade);
         }
 
         public List<Serie> Lista()
         {
-            throw new NotImplementedException();
+            return listaSerie;
         }
 
         public int ProximoId()
         {
-            throw new NotImplementedException();
+            return listaSerie.Count;
         }
 
         public Serie RetornaPorId(int id)
         {
-            throw new NotImplementedException();
+            return listaSerie[id];
         }
     }
 }

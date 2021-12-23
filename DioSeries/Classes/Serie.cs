@@ -9,6 +9,7 @@ namespace DioSeries
         private string Titulo { get; set; }
         private string Descricao { get; set; }
         private int Ano { get; set; }
+        private bool Excluido { get; set; }
 
         // Métodos
         public Serie(int id, Genero genero, string titulo, string descricao, int ano)
@@ -38,6 +39,11 @@ namespace DioSeries
         public int retornaId()
         {
             return this.Id;
+        }
+
+        public void Excluir()
+        {
+            this.Excluido = true;
         }
     }
 }
