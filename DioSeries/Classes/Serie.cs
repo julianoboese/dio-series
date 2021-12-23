@@ -28,7 +28,10 @@ namespace DioSeries
             retorno += "Título: " + this.Titulo + Environment.NewLine;
             retorno += "Descrição: " + this.Descricao + Environment.NewLine;
             retorno += "Ano de início: " + this.Ano + Environment.NewLine;
-            retorno += "Excluído: " + this.Excluido + Environment.NewLine;
+            if (this.Excluido)
+            {
+                retorno += "*Excluído*" + Environment.NewLine;
+            }
             return retorno;
         }
 
