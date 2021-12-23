@@ -4,7 +4,7 @@ using DioSeries.Interfaces;
 
 namespace DioSeries
 {
-    internal class SerieRepositorio : IRepositorio<Serie>
+    public class SerieRepositorio : IRepositorio<Serie>
     {
         private List<Serie> listaSerie = new List<Serie>();
         public void Atualiza(int id, Serie entidade)
