@@ -6,6 +6,7 @@ namespace DioSeries
     public class Program
     {
         static SerieRepositorio repositorio = new SerieRepositorio();
+
         static void Main(string[] args)
         {
             string opcaoUsuario = ObterOpcaoUsuario();
@@ -19,6 +20,9 @@ namespace DioSeries
                         break;
                     case "2":
                         InserirSerie();
+                        break;
+                    case "3":
+                        AtualizarSerie();
                         break;
                     default:
                         break;
@@ -73,6 +77,39 @@ namespace DioSeries
                 ano: entradaAno);
 
             repositorio.Insere(novaSerie);
+        }
+
+        private static void AtualizarSerie()
+        {
+            Console.WriteLine("Atualizar série");
+
+            Console.Write("Digie o id da série: ");
+            int idSerie = int.Parse(Console.ReadLine());
+
+            foreach (int i in Enum.GetValues(typeof(Genero)))
+            {
+                Console.WriteLine($"{i} - {Enum.GetName(typeof(Genero), i)}");
+            }
+
+            Console.Write("Digite o gênero entre as opções acima: ");
+            int entradaGenero = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o título da série: ");
+            string entradaTitulo = Console.ReadLine();
+
+            Console.Write("Digite a descrição da série: ");
+            string entradaDescricao = Console.ReadLine();
+
+            Console.Write("Digite o ano de início da série: ");
+            int entradaAno = int.Parse(Console.ReadLine());
+
+            Serie serieAtualizada = new Serie(id: idSerie,
+                genero: (Genero)entradaGenero,
+                titulo: entradaTitulo,
+                descricao: entradaDescricao,
+                ano: entradaAno);
+
+            repositorio.Atualiza(idSerie, serieAtualizada);
         }
 
         private static string ObterOpcaoUsuario()

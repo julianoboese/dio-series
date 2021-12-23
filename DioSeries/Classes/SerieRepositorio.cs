@@ -7,9 +7,9 @@ namespace DioSeries
     public class SerieRepositorio : IRepositorio<Serie>
     {
         private List<Serie> listaSerie = new List<Serie>();
-        public void Atualiza(int id, Serie entidade)
+        public void Atualiza(int id, Serie serie)
         {
-            listaSerie[id] = entidade;
+            listaSerie[id] = serie;
         }
 
         public void Exclui(int id)
@@ -17,9 +17,9 @@ namespace DioSeries
             listaSerie[id].Excluir();
         }
 
-        public void Insere(Serie entidade)
+        public void Insere(Serie serie)
         {
-            listaSerie.Add(entidade);
+            listaSerie.Add(serie);
         }
 
         public List<Serie> Lista()
