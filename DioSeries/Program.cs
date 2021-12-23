@@ -30,12 +30,16 @@ namespace DioSeries
                     case "5":
                         VisualizarSerie();
                         break;
+                    case "C":
+                        Console.Clear();
+                        break;
                     default:
                         break;
                 }
 
                 opcaoUsuario = ObterOpcaoUsuario();
             }
+            Console.WriteLine("Obrigado por utilizar nossos serviços.");
         }
 
         private static void ListarSeries()
