@@ -24,6 +24,12 @@ namespace DioSeries
                     case "3":
                         AtualizarSerie();
                         break;
+                    case "4":
+                        ExcluirSerie();
+                        break;
+                    case "5":
+                        VisualizarSerie();
+                        break;
                     default:
                         break;
                 }
@@ -38,6 +44,7 @@ namespace DioSeries
 
             List<Serie> lista = repositorio.Lista();
 
+            Console.WriteLine();
             if (lista.Count == 0)
             {
                 Console.WriteLine("Nenhuma série cadastrada.");
@@ -45,7 +52,8 @@ namespace DioSeries
             }
             foreach (Serie serie in lista)
             {
-                Console.WriteLine($"#ID {serie.retornaId()}: {serie.retornaTitulo()}");
+                bool excluido = serie.retornaExcluido();
+                Console.WriteLine($"#ID {serie.retornaId()}: {serie.retornaTitulo()}{(excluido ? " *Excluído*" : "")}");
             }
         }
 
@@ -110,6 +118,27 @@ namespace DioSeries
                 ano: entradaAno);
 
             repositorio.Atualiza(idSerie, serieAtualizada);
+        }
+
+        public static void ExcluirSerie()
+        {
+            Console.WriteLine("Excluir série");
+
+            Console.Write("Digie o id da série: ");
+            int idSerie = int.Parse(Console.ReadLine());
+
+            repositorio.Exclui(idSerie);
+        }
+
+        public static void VisualizarSerie()
+        {
+            Console.WriteLine("Visualizar série");
+
+            Console.Write("Digie o id da série: ");
+            int idSerie = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+            Console.WriteLine(repositorio.RetornaPorId(idSerie));
         }
 
         private static string ObterOpcaoUsuario()
