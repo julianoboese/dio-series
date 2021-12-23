@@ -117,7 +117,19 @@ namespace DioSeries
             Console.Write("Digie o id da série: ");
             int idSerie = int.Parse(Console.ReadLine());
 
-            repositorio.Exclui(idSerie);
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("DESEJA MESMO EXCLUIR A SÉRIE ABAIXO?");
+            Console.WriteLine();
+            Console.WriteLine(repositorio.RetornaPorId(idSerie));
+            Console.WriteLine("1 - Sim");
+            Console.WriteLine("2 - Não");
+            string confirmacao = Console.ReadLine();
+
+            if (confirmacao.ToUpper() == "SIM" || int.Parse(confirmacao) == 1)
+            {
+                repositorio.Exclui(idSerie);
+            }
         }
 
         public static void VisualizarSerie()
