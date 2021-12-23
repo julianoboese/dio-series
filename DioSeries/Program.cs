@@ -65,28 +65,7 @@ namespace DioSeries
         {
             Console.WriteLine("Inserir nova série");
 
-            foreach (int i in Enum.GetValues(typeof(Genero)))
-            {
-                Console.WriteLine($"{i} - {Enum.GetName(typeof(Genero), i)}");
-            }
-
-            Console.Write("Digite o gênero entre as opções acima: ");
-            int entradaGenero = int.Parse(Console.ReadLine());
-
-            Console.Write("Digite o título da série: ");
-            string entradaTitulo = Console.ReadLine();
-
-            Console.Write("Digite a descrição da série: ");
-            string entradaDescricao = Console.ReadLine();
-
-            Console.Write("Digite o ano de início da série: ");
-            int entradaAno = int.Parse(Console.ReadLine());
-
-            Serie novaSerie = new Serie(id: repositorio.ProximoId(),
-                genero: (Genero)entradaGenero,
-                titulo: entradaTitulo,
-                descricao: entradaDescricao,
-                ano: entradaAno);
+            Serie novaSerie = DadosSerie(repositorio.ProximoId());
 
             repositorio.Insere(novaSerie);
         }
@@ -98,6 +77,13 @@ namespace DioSeries
             Console.Write("Digie o id da série: ");
             int idSerie = int.Parse(Console.ReadLine());
 
+            Serie serieAtualizada = DadosSerie(idSerie);
+
+            repositorio.Atualiza(idSerie, serieAtualizada);
+        }
+
+        public static Serie DadosSerie(int entradaid)
+        {
             foreach (int i in Enum.GetValues(typeof(Genero)))
             {
                 Console.WriteLine($"{i} - {Enum.GetName(typeof(Genero), i)}");
@@ -115,13 +101,13 @@ namespace DioSeries
             Console.Write("Digite o ano de início da série: ");
             int entradaAno = int.Parse(Console.ReadLine());
 
-            Serie serieAtualizada = new Serie(id: idSerie,
+            Serie serie = new Serie(id: entradaid,
                 genero: (Genero)entradaGenero,
                 titulo: entradaTitulo,
                 descricao: entradaDescricao,
                 ano: entradaAno);
 
-            repositorio.Atualiza(idSerie, serieAtualizada);
+            return serie;
         }
 
         public static void ExcluirSerie()
